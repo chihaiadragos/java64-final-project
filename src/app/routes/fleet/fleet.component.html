@@ -1,0 +1,19 @@
+<mat-grid-list class="grid-list"  rowHeight="600" cols="3">
+
+
+    @for (car of allCars; track car; let i = $index) {
+    <mat-grid-tile>
+      <app-car-card
+        [id]="car.id"
+        [brand]="car.brand" 
+        [model]="car.model" 
+        [carBodyType]="car.carBodyType"
+        [year]="car.year"
+        [color]="car.color"
+        [mileage]="car.mileage" 
+        [amount]="car.amount" 
+        [imageUrl]="car.imageUrl">
+      </app-car-card>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>

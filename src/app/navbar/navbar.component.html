@@ -1,0 +1,39 @@
+<header>
+    <div class="navbar">
+      <div class="logo"><a href="#">Car Rent Company</a></div>
+      <ul class="links">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/about']">About</a></li>
+        <li><a [routerLink]="['/fleet']">Fleet</a></li>
+        <li><a [routerLink]="['/contact']">Contact</a></li>
+      </ul>
+      <div *ngIf="isLoggedIn()"> 
+        <div>
+          <p style="color: aliceblue"> [ {{this.user.accountType}} ] {{this.user.fullName}}</p>
+          <a href="#" [routerLink]="['/']" class="action_btn" (click)="logOut()">Log out</a>
+          <div class="toggle_btn">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!isLoggedIn()"> 
+        <a href="#" [routerLink]="['/login']" class="action_btn" >Log in</a>
+        <div class="toggle_btn">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown_menu">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/about']">About</a></li>
+      <li><a [routerLink]="['/fleet']">Fleet</a></li>
+      <li><a [routerLink]="['/contact']">Contact</a></li>
+      <li><a href="#" class="action_btn">Log in</a></li>
+    </div>
+</header>
+
+<button mat-button class="white" [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button class="white" mat-menu-item>Item 1</button>
+  <button class="white" mat-menu-item>Item 2</button>
+</mat-menu>
