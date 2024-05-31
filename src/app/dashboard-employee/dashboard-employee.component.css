@@ -1,0 +1,33 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.example-disabled {
+  display: inline-block;
+}
+
+.balance-row {
+    display: flex;
+    padding: 10px;
+    font-size: 1.2em;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .balance-label {
+    font-weight: bold;
+  }
+  
+  .balance-value {
+    color: red;
+  }

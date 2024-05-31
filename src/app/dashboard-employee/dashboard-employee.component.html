@@ -2,8 +2,35 @@
 
     <img [src]="url" height="200" alt="default person photo"><br>
 
-    <input type="file" (change)="onselectFile($event)">
+    <input type="file" (change)="onselectFile($event)"><br>
 
-    
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>First name</mat-label>
+          <input matInput placeholder="Ex Ion" value="Dragos">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Ex Ionescu" value="Chihaia">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex test@test.com" value="dragos@gmail.ro">
+        </mat-form-field>
+    </form>
+
+    <div class="balance-row">
+        <span class="balance-label">Balance:</span>
+        <span class="balance-value">{{ balance }} $</span>
+      </div>
+
+    <div class="example-button-row">
+        <button mat-fab extended color="primary">
+          <mat-icon>add</mat-icon>
+          Add money
+        </button>
+    </div>
 
 </div>
