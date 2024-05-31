@@ -8,6 +8,7 @@ import { AboutComponent } from './routes/about/about.component';
 import { ContactComponent } from './routes/contact/contact.component';
 import { CarDetailsComponent } from './routes/car-details/car-details.component';
 import { CarUpdateComponent } from './routes/car-update/car-update.component';
+import { DashboardEmployeeComponent } from './dashboard-employee/dashboard-employee.component';
 
 export const routes: Routes = [
     {
@@ -45,5 +46,9 @@ export const routes: Routes = [
     {
         path: 'update/:id',
         component: CarUpdateComponent
+    },
+    {
+        path: 'dashboard',
+        component: DashboardEmployeeComponent
     }
 ];
