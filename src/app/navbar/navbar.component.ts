@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule, MatButtonModule, MatMenuModule, MatIconModule],
+  imports: [RouterModule, CommonModule, MatButtonModule, MatMenuModule, MatIconModule,MatGridListModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })

@@ -9,17 +9,18 @@
         <li *ngIf="!isLoggedIn()"><a [routerLink]="['/register']">Register Now</a></li>
         <li *ngIf="isLoggedIn()"><a [routerLink]="['/dashboard']">User Settings</a></li>
       </ul>
-      <div *ngIf="isLoggedIn()"> 
-        <div>
-          <p style="color: aliceblue"> [ {{this.user.accountType}} ] {{this.user.fullName}}</p>
-          <a href="#" [routerLink]="['/']" class="action_btn" (click)="logOut()">Log out</a>
-          <div class="toggle_btn">
-            <i class="fa-solid fa-bars"></i>
-          </div>
+      <div *ngIf="isLoggedIn()">
+
+      
+        <p style="color: aliceblue"> [ {{this.user.accountType}} - userID: {{this.user.id}} ] {{this.user.fullName}}</p>
+        <a href="#" [routerLink]="['/']" class="action_btn" (click)="logOut()" style="text-decoration: none">Log out</a>
+        <div class="toggle_btn">
+          <i class="fa-solid fa-bars"></i>
         </div>
+      
       </div>
       <div *ngIf="!isLoggedIn()"> 
-        <a href="#" [routerLink]="['/login']" class="action_btn" >Log in</a>
+        <a href="#" [routerLink]="['/login']" class="action_btn" style="text-decoration: none">Log in</a>
         <div class="toggle_btn">
           <i class="fa-solid fa-bars"></i>
         </div>

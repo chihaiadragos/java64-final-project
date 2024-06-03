@@ -30,11 +30,13 @@ export class LoginComponent {
     this.loginService.login(userLogin).subscribe((data)=>{
       console.log(data);
       this.localService.saveData("currentUser", JSON.stringify({
+        id: data.id,
         fullName: data.fullName,
         accountType: data.accountType,
         token: data.token
       }));
       this.router.navigate(['']);
+      console.log(data);
     })
   }
 

@@ -1,14 +1,51 @@
 <div class="container text-center" style="background-color: skyblue">
 
+  <h1>USER CONTROL PANEL</h1>
+
     <img [src]="url" height="200" alt="default person photo"><br>
 
     <input type="file" (change)="onselectFile($event)"><br>
 
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>First name</mat-label>
-          <input matInput placeholder="Ex Ion" value="Dragos">
-        </mat-form-field>
+    <form class="example-form" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    
+    <!-- FORM FIRST NAME VALUE -->
+    <mat-form-field class="example-full-width">
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" formControlName="firstName" placeholder="enter first name">
+    </mat-form-field>
+    
+    <!-- FORM LAST NAME VALUE -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Last Name</mat-label>
+      <input matInput type="text" formControlName="lastName" placeholder="enter last name">
+    </mat-form-field>
+    
+    <!-- FORM EMAIL VALUE -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" formControlName="email" placeholder="enter email">
+    </mat-form-field>
+    
+    <!-- FORM ADDRESS VALUE -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Address</mat-label>
+      <input matInput type="text" formControlName="address" placeholder="enter address">
+    </mat-form-field>
+
+    <div class="example-button-row">
+      <button mat-fab extended color="primary" type="submit">
+        <mat-icon>save_alt</mat-icon>
+        Save changes
+      </button>
+    </div>
+    </form>
+
+
+    <!-- <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="Ex Ion" value="Dragos">
+      </mat-form-field>
       
         <mat-form-field class="example-full-width">
             <mat-label>Last name</mat-label>
@@ -24,18 +61,25 @@
           <mat-label>Address</mat-label>
           <input matInput placeholder="Ex street Dolphin number 11" value="Mihai Voda number 3">
       </mat-form-field>
-    </form>
+    </form> -->
 
     <div class="balance-row">
-        <span class="balance-label">Balance:</span>
-        <span class="balance-value">{{ balance }} $</span>
-      </div>
+      <span class="balance-label">Balance:</span>
+      <span class="balance-value">{{ balance }} $</span>
+    </div>
+
+    <!-- <div class="example-button-row">
+        <button mat-fab extended color="primary">
+          <mat-icon>save_alt</mat-icon>
+          Save changes
+        </button>
+    </div><br> -->
 
     <div class="example-button-row">
-        <button mat-fab extended color="primary">
-          <mat-icon>add</mat-icon>
-          Add money
-        </button>
-    </div>
+      <button mat-fab extended color="primary" (click)="addMoney()">
+        <mat-icon>add</mat-icon>
+        Add money
+      </button>
+  </div>
 
 </div>
