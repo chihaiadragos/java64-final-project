@@ -6,6 +6,7 @@
         <li><a [routerLink]="['/about']">About</a></li>
         <li><a [routerLink]="['/fleet']">Fleet</a></li>
         <li><a [routerLink]="['/contact']">Contact</a></li>
+        <li><a [routerLink]="['/test']">TEST</a></li>
         <li *ngIf="!isLoggedIn()"><a [routerLink]="['/register']">Register Now</a></li>
         <li *ngIf="isLoggedIn()"><a [routerLink]="['/dashboard']">User Settings</a></li>
       </ul>
@@ -35,8 +36,8 @@
     </div>
 </header>
 
-<button mat-button class="white" [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
+<!-- <button mat-button class="white" [matMenuTriggerFor]="menu">Menu</button> -->
+<!-- <mat-menu #menu="matMenu">
   <button class="white" mat-menu-item>Item 1</button>
   <button class="white" mat-menu-item>Item 2</button>
-</mat-menu>
+</mat-menu> -->

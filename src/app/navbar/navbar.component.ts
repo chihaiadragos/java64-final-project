@@ -18,18 +18,18 @@ export class NavbarComponent {
   user: any;
 
   constructor(private router: Router, private localService: LocalService) { }
-  gotoFleet() {
-    this.router.navigate(['fleet']);
-  }
-  gotoHome() {
-    this.router.navigate(['']);
-  }
-  gotoAbout() {
-    this.router.navigate(['about']);
-  }
-  gotoContact() {
-    this.router.navigate(['contact']);
-  }
+  // gotoFleet() {
+  //   this.router.navigate(['fleet']);
+  // }
+  // gotoHome() {
+  //   this.router.navigate(['']);
+  // }
+  // gotoAbout() {
+  //   this.router.navigate(['about']);
+  // }
+  // gotoContact() {
+  //   this.router.navigate(['contact']);
+  // }
 
   public logOut() {
     this.localService.clearData();

@@ -9,6 +9,10 @@ import { ContactComponent } from './routes/contact/contact.component';
 import { CarDetailsComponent } from './routes/car-details/car-details.component';
 import { CarUpdateComponent } from './routes/car-update/car-update.component';
 import { DashboardEmployeeComponent } from './dashboard-employee/dashboard-employee.component';
+import { TestComponent } from './test/test.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
 
 export const routes: Routes = [
     {
@@ -50,5 +54,21 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardEmployeeComponent
+    },
+    {
+        path: 'test',
+        component: TestComponent
+    },
+    {
+        path: 'reservation',
+        component: ReservationsComponent
+    },
+    {
+        path: 'add-reservation',
+        component: AddReservationComponent
+    },
+    {
+        path: 'add-employee',
+        component: AddEmployeeComponent
     }
 ];

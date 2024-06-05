@@ -24,5 +24,5 @@ export class FleetService {
     console.log(car);
     console.log(this.url2)
     return this.http.put<Car>(this.url2, car)
-  }
+  } 
 }
