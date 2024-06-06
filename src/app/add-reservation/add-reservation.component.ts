@@ -11,6 +11,8 @@ import { MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent } fr
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import Period from '../types/period';
+import Car from '../types/car';
+import { FleetService } from '../routes/fleet/fleet.service';
 
 @Component({
   selector: 'app-add-reservation',
@@ -41,10 +43,11 @@ export class AddReservationComponent implements OnInit{
   });
 
   period!: Period;
-  startString: string | null = null;
-  endString: string | null = null;
+  startString: string = '';
+  endString: string = '';
+  cars: Car[] = [];
 
-  constructor() {}
+  constructor(private fleetService: FleetService) {}
   // periodForm: FormGroup;
 
   // constructor(
@@ -58,8 +61,10 @@ export class AddReservationComponent implements OnInit{
 
   ngOnInit(): void {
     this.range.valueChanges.subscribe(value => {
-      this.startString = value.start ? value.start.toISOString() : null;
-      this.endString = value.end ? value.end.toISOString() : null;
+      this.startString = value.start ? value.start.toISOString() : '';
+      this.startString = this.startString?.slice(0, 10);
+      this.endString = value.end ? value.end.toISOString() : '';
+      this.endString = this.endString?.slice(0, 10);
     })
   }
   public filterByPeriod() {
@@ -74,8 +79,21 @@ export class AddReservationComponent implements OnInit{
     console.log('End Date:', this.endString);
   }
   onSubmit() {
-    console.log('Start Date:', this.startString?.slice(0, 10));
-    console.log('End Date:', this.endString?.slice(0, 10));
+    console.log('Start Date:', this.startString);
+    console.log('End Date:', this.endString);
     
+
+    
+    this.period = new Period(this.startString, this.endString);
+    console.log(this.period);
+
+    const anotherPeriod: Period = {
+      startDate: this.startString,
+      endDate: this.endString
+    }
+
+    this.fleetService.availableCarsDuringPeriord(anotherPeriod).subscribe((data) => {
+      console.log(data);
+    })
   }
 }

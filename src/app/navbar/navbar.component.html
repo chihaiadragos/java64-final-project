@@ -8,7 +8,7 @@
         <li><a [routerLink]="['/contact']">Contact</a></li>
         <li><a [routerLink]="['/test']">TEST</a></li>
         <li *ngIf="!isLoggedIn()"><a [routerLink]="['/register']">Register Now</a></li>
-        <li *ngIf="isLoggedIn()"><a [routerLink]="['/dashboard']">User Settings</a></li>
+        <li *ngIf="isLoggedIn()"><a [routerLink]="['/dashboard/', userID]">User Settings</a></li>
       </ul>
       <div *ngIf="isLoggedIn()">
 

@@ -13,6 +13,7 @@ import { TestComponent } from './test/test.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { AddReservationComponent } from './add-reservation/add-reservation.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 export const routes: Routes = [
     {
@@ -52,7 +53,7 @@ export const routes: Routes = [
         component: CarUpdateComponent
     },
     {
-        path: 'dashboard',
+        path: 'dashboard/:id',
         component: DashboardEmployeeComponent
     },
     {
@@ -70,5 +71,9 @@ export const routes: Routes = [
     {
         path: 'add-employee',
         component: AddEmployeeComponent
+    },
+    {
+        path: 'file-upload',
+        component: FileUploadComponent
     }
 ];

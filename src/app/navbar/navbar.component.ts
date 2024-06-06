@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LocalService } from '../login/service/local.service';
 import { CommonModule } from '@angular/common';
@@ -14,10 +14,21 @@ import { MatGridListModule } from '@angular/material/grid-list';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   user: any;
+  userID: string | null = null;
 
   constructor(private router: Router, private localService: LocalService) { }
+  ngOnInit(): void {
+    const currentUserString = this.localService.getData("currentUser");
+    if (currentUserString) {
+
+      const currentUser = JSON.parse(currentUserString);
+
+      this.userID = currentUser.id;
+      console.log("the user id is " + this.userID);
+    }
+  }
   // gotoFleet() {
   //   this.router.navigate(['fleet']);
   // }

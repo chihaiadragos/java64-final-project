@@ -1,21 +1,21 @@
 class Period {
-    public dateFrom: String;
-    public dateTo: String;
+    public startDate: String;
+    public endDate: String;
 
     
   constructor();
 
   constructor(
-    dateFrom: string,
-    dateTo: string,
+    startDate: string,
+    endDate: string,
   );
 
     constructor(    
-        dateFrom?: string,
-        dateTo?: string
+      startDate?: string,
+      endDate?: string
     ) {
-        this.dateFrom = dateFrom ?? '';
-        this.dateTo = dateTo ?? '';
+        this.startDate = startDate ?? '';
+        this.endDate = endDate ?? '';
     }
 }
 export default Period;
