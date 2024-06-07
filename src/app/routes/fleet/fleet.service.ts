@@ -11,6 +11,7 @@ export class FleetService {
   private url = "http://localhost:8080/car";
   private url2 = "http://localhost:8080/car/update";
   private url3 = "http://localhost:8080/car/availablecarsduringperiod";
+  private url4 = "http://localhost:8080/car/create";
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,10 @@ export class FleetService {
     console.log(car);
     console.log(this.url2)
     return this.http.put<Car>(this.url2, car)
+  } 
+
+  public createCar(car: Car) {
+    return this.http.post<Car>(this.url4, car)
   } 
 
   public availableCarsDuringPeriord(per: Period){

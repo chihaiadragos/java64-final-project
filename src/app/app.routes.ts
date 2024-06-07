@@ -14,6 +14,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { AddReservationComponent } from './add-reservation/add-reservation.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { AddCarComponent } from './add-car/add-car.component';
 
 export const routes: Routes = [
     {
@@ -75,5 +76,9 @@ export const routes: Routes = [
     {
         path: 'file-upload',
         component: FileUploadComponent
+    },
+    {
+        path: 'add-car',
+        component: AddCarComponent
     }
 ];
