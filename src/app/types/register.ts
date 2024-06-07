@@ -5,6 +5,7 @@ class RegisterClient {
     public address: string;
     public email: string;
     public password: string;
+    public branch: string;
     public accountType: string;
 
     constructor(
@@ -13,6 +14,7 @@ class RegisterClient {
         address: string,
         email: string,
         password: string,
+        branch: string,
         accountType: string
     ) {
         this.firstName = firstName;
@@ -20,6 +22,7 @@ class RegisterClient {
         this.address = address;
         this.email = email;
         this.password = password;
+        this.branch = branch;
         this.accountType = accountType;
     }
 

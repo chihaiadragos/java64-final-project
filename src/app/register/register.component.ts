@@ -25,7 +25,8 @@ export class RegisterComponent {
       lastName: ['', Validators.required],
       address: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      branch: ['', Validators.required]
     }
   );
 
@@ -38,6 +39,7 @@ export class RegisterComponent {
       this.register.get('address')?.value,
       this.register.get('email')?.value,
       this.register.get('password')?.value,
+      this.register.get('branch')?.value,
       this.accountType
     );
 

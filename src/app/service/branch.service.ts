@@ -13,4 +13,7 @@ export class BranchService {
   public getBranchById(id: number) {
     return this.http.get<Branch>(this.url + '/' + id);
   }
+  public getAllBranches() {
+    return this.http.get<Branch[]>(this.url);
+  }
 }
