@@ -43,6 +43,7 @@ export class AddReservationComponent implements OnInit{
   });
 
   period!: Period;
+  periodLength: number | null = null;
   startString: string = '';
   endString: string = '';
   cars: Car[] = [];
@@ -81,6 +82,21 @@ export class AddReservationComponent implements OnInit{
   onSubmit() {
     console.log('Start Date:', this.startString);
     console.log('End Date:', this.endString);
+
+    const startDate = this.range.get('start')?.value;
+    const endDate = this.range.get('end')?.value;
+
+    // for counting period of days length
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      this.periodLength = Math.ceil((end.getTime() - start.getTime()) / (1000 * 3600 * 24));
+      console.log(`Period length: ${this.periodLength} days`);
+    } else {
+      this.periodLength = null;
+      console.error('Invalid date range');
+    }
+    // 
     
 
     

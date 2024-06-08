@@ -11,6 +11,7 @@ import RegisterClient from '../types/register';
 import { FleetComponent } from '../routes/fleet/fleet.component';
 import { FleetService } from '../routes/fleet/fleet.service';
 import Car from '../types/car';
+import Banana from '../types/newcar';
 
 interface CarBodyType {
   value: string;
@@ -50,14 +51,16 @@ export class AddCarComponent implements OnInit{
       mileage: [0, Validators.required],
       amount: [0, Validators.required],
       imageUrl: ['', Validators.required],
-      branchCity: ['', Validators.required]
+      branchId: ['', Validators.required]
     }
   );
 
 
   public registerNow() {
+    
 
-    const carRegister = new Banana(
+    const carRegister = new Car(
+      -1,
       this.register.get('brand')?.value,
       this.register.get('model')?.value,
       this.register.get('carBodyType')?.value,
@@ -66,8 +69,7 @@ export class AddCarComponent implements OnInit{
       this.register.get('mileage')?.value,
       this.register.get('amount')?.value,
       this.register.get('iamgeUrl')?.value,
-      this.register.get('mileage')?.value,
-      new Branch(this.allBranches[0].id, '', '')
+      new Branch(this.register.get('branchId')?.value, '', '')
     );
 
     console.log(carRegister);

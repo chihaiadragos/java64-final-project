@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Car from '../../types/car';
 import Period from '../../types/period';
+import Banana from '../../types/newcar';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class FleetService {
     return this.http.put<Car>(this.url2, car)
   } 
 
-  public createCar(car: Car) {
-    return this.http.post<Car>(this.url4, car)
+  public createCar(car: Banana) {
+    return this.http.post<Banana>(this.url4, car)
   } 
 
   public availableCarsDuringPeriord(per: Period){
