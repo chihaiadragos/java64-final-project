@@ -13,7 +13,12 @@ export class BranchService {
   public getBranchById(id: number) {
     return this.http.get<Branch>(this.url + '/' + id);
   }
+
   public getAllBranches() {
     return this.http.get<Branch[]>(this.url);
+  }
+
+  public createBranch(branch: Branch) {
+    return this.http.post<Branch>(this.url + '/create', branch);
   }
 }
