@@ -2,6 +2,7 @@ class Branch {
     public id: number;
     public city: string;
     public address: string;
+  
 
     constructor();
 
@@ -11,6 +12,7 @@ class Branch {
         this.id = id ?? 0;
         this.city = city ?? '';
         this.address = address ?? '';
+        // this.status = status ?? '';
     }
 }
 export default Branch;

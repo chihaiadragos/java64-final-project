@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -13,12 +13,17 @@ import { MatIconModule } from '@angular/material/icon';
 import Period from '../types/period';
 import Car from '../types/car';
 import { FleetService } from '../routes/fleet/fleet.service';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { CarCardComponent } from '../car-card/car-card.component';
+import { LocalService } from '../login/service/local.service';
 
 @Component({
   selector: 'app-add-reservation',
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [
+    MatGridListModule, 
+    CarCardComponent,
     FormsModule,
     MatFormFieldModule, 
     MatInputModule, 
@@ -47,8 +52,9 @@ export class AddReservationComponent implements OnInit{
   startString: string = '';
   endString: string = '';
   cars: Car[] = [];
+  defaultImage = "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png";
 
-  constructor(private fleetService: FleetService) {}
+  constructor(private fleetService: FleetService, private localService: LocalService, private formBuilder: FormBuilder) {}
   // periodForm: FormGroup;
 
   // constructor(
@@ -61,6 +67,15 @@ export class AddReservationComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+    this.fleetService.getAllCars().subscribe((data) => {
+      this.cars = data;
+      this.cars.forEach((element) => {
+        element.imageUrl = this.defaultImage;
+      })
+      console.log(data);
+    })
+
     this.range.valueChanges.subscribe(value => {
       this.startString = value.start ? value.start.toISOString() : '';
       this.startString = this.startString?.slice(0, 10);
@@ -72,12 +87,19 @@ export class AddReservationComponent implements OnInit{
     console.log("filter");
     console.log(this.range);
 
- 
+
+
 
     console.log("-----------------------")
 
     console.log('Start Date:', this.startString);
     console.log('End Date:', this.endString);
+
+    // this.localService.saveData('currentReservation', JSON.stringify({
+    //   start: this.startString,
+    //   end: this.endString,
+    //   length: this.periodLength
+    // }));
   }
   onSubmit() {
     console.log('Start Date:', this.startString);
@@ -97,7 +119,15 @@ export class AddReservationComponent implements OnInit{
       console.error('Invalid date range');
     }
     // 
+    //IMPORTANT SHIT HERE - FOR RESERVATION 
+//????????????????????????????????
+    this.localService.saveData('asdf', JSON.stringify({
+      start: this.startString,
+      end: this.endString,
+      length: this.periodLength
+    }));
     
+
 
     
     this.period = new Period(this.startString, this.endString);
@@ -109,6 +139,10 @@ export class AddReservationComponent implements OnInit{
     }
 
     this.fleetService.availableCarsDuringPeriord(anotherPeriod).subscribe((data) => {
+      this.cars = data;
+      this.cars.forEach((element) => {
+        element.imageUrl = this.defaultImage;
+      })
       console.log(data);
     })
   }

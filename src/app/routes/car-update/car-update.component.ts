@@ -11,6 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { BranchService } from '../../service/branch.service';
 import Branch from '../../types/branch';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -96,6 +97,13 @@ export class CarUpdateComponent implements OnInit{
       };
       console.log(updatedCar);
       this.fleetService.updateCar(updatedCar).subscribe((result) => {
+        Swal.fire({
+          position: 'center',
+          icon: "success",
+          title: "Car has been updated",
+          showConfirmButton: false,
+          timer: 3500
+        });
         console.log(result);
         this.router.navigate(['/fleet']);
       });

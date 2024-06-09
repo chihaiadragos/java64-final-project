@@ -8,8 +8,8 @@ class Reservation {
   public car: Car | null;
   public dateFrom: String;
   public dateTo: String;
-  public branchPickUp: Branch | null;
-  public branchDropOff: Branch | null;
+  public branch: Branch | null;
+  // public branchDropOff: Branch | null;
   public amount: number;
 
   constructor();
@@ -20,8 +20,8 @@ class Reservation {
     car: Car,
     dateFrom: string,
     dateTo: string,
-    branchPickUp: Branch,
-    branchDropOff: Branch,
+    branch: Branch,
+    // branchDropOff: Branch,
     amount: number
   );
 
@@ -31,8 +31,8 @@ class Reservation {
     car?: Car,
     dateFrom?: string,
     dateTo?: string,
-    branchPickUp?: Branch,
-    branchDropOff?: Branch,
+    branch?: Branch,
+    // branchDropOff?: Branch,
     amount?: number
   ) {
     this.id = id ?? 0;
@@ -40,8 +40,8 @@ class Reservation {
     this.car = car ?? null;
     this.dateFrom = dateFrom ?? '';
     this.dateTo = dateTo ?? '';
-    this.branchPickUp = branchPickUp ?? null;
-    this.branchDropOff = branchDropOff ?? null;
+    this.branch = branch ?? null;
+    // this.branchDropOff = branchDropOff ?? null;
     this.amount = amount ?? 0;
   }
 }

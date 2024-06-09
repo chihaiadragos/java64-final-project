@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Route, Router } from '@angular/router';
+import Car from '../types/car';
+import Branch from '../types/branch';
 
 @Component({
   selector: 'app-car-card',
@@ -11,6 +13,8 @@ import { Route, Router } from '@angular/router';
   styleUrl: './car-card.component.css'
 })
 export class CarCardComponent {
+  // public car: Car | undefined;
+
   @Input() id: number = 0;
   @Input() brand: String = "";
   @Input() model: String = "";
@@ -23,8 +27,10 @@ export class CarCardComponent {
 
   constructor(private router: Router) {}
 
+
+
   public showDetails() {
     this.router.navigate([`car/${this.id}`])
-    
   }
+
 }

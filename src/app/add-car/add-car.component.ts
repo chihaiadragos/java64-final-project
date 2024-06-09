@@ -69,7 +69,8 @@ export class AddCarComponent implements OnInit{
       this.register.get('mileage')?.value,
       this.register.get('amount')?.value,
       this.register.get('iamgeUrl')?.value,
-      new Branch(this.register.get('branchId')?.value, '', '')
+      new Branch(this.register.get('branchId')?.value, '', ''),
+      // 'AVAILABLE'
     );
 
     console.log(carRegister);

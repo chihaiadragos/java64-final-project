@@ -16,6 +16,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { AddBranchComponent } from './add-branch/add-branch.component';
+import { BookReservationComponent } from './book-reservation/book-reservation.component';
 
 export const routes: Routes = [
     {
@@ -85,5 +86,9 @@ export const routes: Routes = [
     {
         path: 'add-branch',
         component: AddBranchComponent
+    },
+    {
+        path: 'book-reservation',
+        component: BookReservationComponent
     }
 ];
