@@ -18,6 +18,8 @@ import { AddCarComponent } from './add-car/add-car.component';
 import { AddBranchComponent } from './add-branch/add-branch.component';
 import { BookReservationComponent } from './book-reservation/book-reservation.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { BranchCardComponent } from './branch-card/branch-card.component';
+import { BranchesComponent } from './branches/branches.component';
 
 export const routes: Routes = [
     {
@@ -67,6 +69,14 @@ export const routes: Routes = [
     {
         path: 'reservation',
         component: ReservationsComponent
+    },
+    {
+        path: 'branch',
+        component: BranchCardComponent
+    },
+    {
+        path: 'branches',
+        component: BranchesComponent
     },
     {
         path: 'add-reservation',

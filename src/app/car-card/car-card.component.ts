@@ -13,7 +13,6 @@ import Branch from '../types/branch';
   styleUrl: './car-card.component.css'
 })
 export class CarCardComponent {
-  // public car: Car | undefined;
 
   @Input() id: number = 0;
   @Input() brand: String = "";
@@ -26,8 +25,6 @@ export class CarCardComponent {
   @Input() imageUrl: String = "";
 
   constructor(private router: Router) {}
-
-
 
   public showDetails() {
     this.router.navigate([`car/${this.id}`])

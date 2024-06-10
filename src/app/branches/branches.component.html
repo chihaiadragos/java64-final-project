@@ -1,0 +1,13 @@
+<mat-grid-list class="grid-list"  rowHeight="200" cols="3">
+
+
+    @for (branch of allBranches; track branch; let i = $index) {
+    <mat-grid-tile>
+      <app-branch-card
+        [id]="branch.id"
+        [city]="branch.city" 
+        [address]="branch.address">
+      </app-branch-card>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
