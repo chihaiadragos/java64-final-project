@@ -25,7 +25,7 @@ class Car {
       mileage: number,
       amount: number,
       imageUrl: string,
-      branch: Branch
+      branch: Branch | null
       // status: string
     );
     
@@ -39,7 +39,7 @@ class Car {
       mileage?: number,
       amount?: number,
       imageUrl?: string,
-      branch?: Branch
+      branch?: Branch | null
       // status?: String
     ) {
       this.id = id ?? 0;

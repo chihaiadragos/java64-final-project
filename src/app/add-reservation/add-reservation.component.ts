@@ -68,7 +68,7 @@ export class AddReservationComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.fleetService.getAllCars().subscribe((data) => {
+    this.fleetService.getAllAvailableCars().subscribe((data) => {
       this.cars = data;
       this.cars.forEach((element) => {
         element.imageUrl = this.defaultImage;

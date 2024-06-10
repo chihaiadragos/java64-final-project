@@ -1,1 +1,72 @@
-<p style="color: aliceblue;">HELLO</p>
+<div class="align">
+    <form class="example-form" [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+        <!-- FORM TITLE -->
+    <h1>Your reservation</h1>
+
+        <!-- CUSTOMER ID -->
+        <mat-form-field class="example-full-width">
+            <mat-label>Customer ID</mat-label>
+            <input matInput readonly type="number" formControlName="customerId">
+          </mat-form-field>
+
+    <!-- CUSTOMER FULLNAME -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Client full name</mat-label>
+        <input matInput readonly type="text" formControlName="customerFullName">
+      </mat-form-field>
+
+    <!-- CAR ID -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Car ID</mat-label>
+        <input matInput readonly type="number" formControlName="carId">
+      </mat-form-field>
+
+    <!-- CAR MODEL -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Car model</mat-label>
+        <input matInput readonly type="text" formControlName="carModel">
+      </mat-form-field>
+
+    <!-- CAR BRAND -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Car brand</mat-label>
+        <input matInput readonly type="text" formControlName="carBrand" >
+      </mat-form-field>
+
+    <!-- FROM -->
+    <mat-form-field class="example-full-width">
+        <mat-label>From</mat-label>
+        <input matInput readonly type="text" formControlName="dateFrom" >
+      </mat-form-field>
+
+    <!-- TO -->
+    <mat-form-field class="example-full-width">
+        <mat-label>To</mat-label>
+        <input matInput readonly type="text" formControlName="dateTo" >
+      </mat-form-field>
+
+    <!-- BRANCH ID -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Branch ID</mat-label>
+        <input matInput readonly type="number" formControlName="branchId">
+      </mat-form-field>
+
+    <!-- PICKUP CITY -->
+    <mat-form-field class="example-full-width">
+        <mat-label>City</mat-label>
+        <input matInput readonly type="text" formControlName="pickupCity">
+      </mat-form-field>
+
+    <!-- COST -->
+    <mat-form-field class="example-full-width">
+        <mat-label>Cost</mat-label>
+        <input matInput readonly type="number" formControlName="cost" >
+      </mat-form-field>
+
+    <div class="example-button-row">
+        <button mat-button type="submit">BOOK NOW</button>
+    </div>
+
+</form>
+
+</div>

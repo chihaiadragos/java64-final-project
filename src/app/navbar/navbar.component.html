@@ -6,7 +6,13 @@
         <li><a [routerLink]="['/about']">About</a></li>
         <li><a [routerLink]="['/fleet']">Fleet</a></li>
         <li><a [routerLink]="['/contact']">Contact</a></li>
-        <li><a [routerLink]="['/test']">TEST</a></li>
+        <li *ngIf="isAdmin()"><a [routerLink]="['/test']">TEST</a></li>
+        <!-- <i class="fa-solid fa-calendar-exclamation"></i> -->
+        <!-- <div class="example-button-row">
+          <button mat-fab extended color="primary" >
+            <mat-icon>calendar_today</mat-icon>
+          </button>
+      </div> -->
         <li *ngIf="!isLoggedIn()"><a [routerLink]="['/register']">Register Now</a></li>
         <li *ngIf="isLoggedIn()"><a [routerLink]="['/dashboard/', userID]">User Settings</a></li>
       </ul>

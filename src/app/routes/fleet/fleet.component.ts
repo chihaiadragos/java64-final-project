@@ -17,7 +17,7 @@ export class FleetComponent implements OnInit{
   defaultImage = "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png";
 
   ngOnInit(): void {
-    this.fleetService.getAllCars().subscribe((data) => {
+    this.fleetService.getAllAvailableCars().subscribe((data) => {
       this.allCars = data;
       this.allCars.forEach((element) => {
         element.imageUrl = this.defaultImage;

@@ -17,6 +17,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { AddCarComponent } from './add-car/add-car.component';
 import { AddBranchComponent } from './add-branch/add-branch.component';
 import { BookReservationComponent } from './book-reservation/book-reservation.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 export const routes: Routes = [
     {
@@ -48,8 +49,8 @@ export const routes: Routes = [
         component: ContactComponent
     },
     {
-        path: 'car/:id',
-        component: CarDetailsComponent
+        path: 'navbar',
+        component: NavbarComponent
     },
     {
         path: 'update/:id',

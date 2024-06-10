@@ -9,6 +9,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LocalService } from '../../login/service/local.service';
+import UpdateStatus from '../../types/updateStatus';
+import Swal from 'sweetalert2';
 
 
 
@@ -52,5 +54,30 @@ export class CarDetailsComponent implements OnInit{
       }));
       this.router.navigate([`book-reservation`]);
   // }
+  }
+
+  public deleteCar() {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.fleetService.deleteCar(new UpdateStatus(this.carId, "UNAVAILABLE")).subscribe(data => {
+      
+        })
+        this.router.navigate([`fleet`]);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Car has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+
   }
 }

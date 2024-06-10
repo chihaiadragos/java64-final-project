@@ -15,7 +15,7 @@ class Customer {
         lastName: string,
         email: string,
         address: string,
-        image: File,
+        image: File | null,
         balance: number
     );
 
@@ -25,7 +25,7 @@ class Customer {
         lastName?: string,
         email?: string,
         address?: string,
-        image?: File,
+        image?: File | null,
         balance?: number
     ) {
         this.id = id ?? 0;

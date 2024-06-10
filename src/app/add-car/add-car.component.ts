@@ -37,7 +37,7 @@ export class AddCarComponent implements OnInit{
   ]
   constructor(private router: Router, private fleetService: FleetService, private formBuilder: FormBuilder, private localService: LocalService, private branchService: BranchService){}
   ngOnInit(): void {
-    this.branchService.getAllBranches().subscribe(data => {
+    this.branchService.getAllAvailableBranches().subscribe(data => {
       this.allBranches = data;
     })
   }

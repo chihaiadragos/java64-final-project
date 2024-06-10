@@ -17,6 +17,9 @@ export class BranchService {
   public getAllBranches() {
     return this.http.get<Branch[]>(this.url);
   }
+  public getAllAvailableBranches() {
+    return this.http.get<Branch[]>(this.url + '/available');
+  }
 
   public createBranch(branch: Branch) {
     return this.http.post<Branch>(this.url + '/create', branch);
