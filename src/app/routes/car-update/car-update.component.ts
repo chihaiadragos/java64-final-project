@@ -102,7 +102,7 @@ export class CarUpdateComponent implements OnInit{
           icon: "success",
           title: "Car has been updated",
           showConfirmButton: false,
-          timer: 3500
+          timer: 1500
         });
         console.log(result);
         this.router.navigate(['/fleet']);

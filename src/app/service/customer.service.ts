@@ -9,7 +9,6 @@ import Amount from '../types/amount';
 export class CustomerService {
   private url = "http://localhost:8080/customer";
   private url2 = "http://localhost:8080/customer/update";
-  private url3 = "http://localhost:8080/customer/userid/";
 
   constructor(private http: HttpClient) { }
 

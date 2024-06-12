@@ -142,7 +142,6 @@ export class DashboardEmployeeComponent implements OnInit {
     const { value: balance } = await Swal.fire({
       title: 'Enter amount',
       input: 'number',
-      // inputLabel: 'Your balance',
       inputValue,
       showCancelButton: true,
     });
@@ -156,12 +155,5 @@ export class DashboardEmployeeComponent implements OnInit {
       });
       Swal.fire(`You add ${balance}$ to your account`);
     }
-    // const amount: Amount = new Amount(1000);
-    // this.customerService
-    //   .addMoney(amount, this.customer.id)
-    //   .subscribe((result: any) => {
-    //     console.log(result);
-    //     this.ngOnInit();
-    //   });
   }
 }

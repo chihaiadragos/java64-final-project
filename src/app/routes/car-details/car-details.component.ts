@@ -43,8 +43,6 @@ export class CarDetailsComponent implements OnInit{
     this.router.navigate([`/update/${this.carId}`]);
   }
   public bookNow() {
-
-    // if (this.car) {
       console.log(this.car.id);
       console.log(this.car.branch?.id);
 
@@ -53,7 +51,6 @@ export class CarDetailsComponent implements OnInit{
         carBranchId: this.car.branch?.id
       }));
       this.router.navigate([`book-reservation`]);
-  // }
   }
 
   public deleteCar() {

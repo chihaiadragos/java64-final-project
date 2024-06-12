@@ -101,5 +101,9 @@ export const routes: Routes = [
     {
         path: 'book-reservation',
         component: BookReservationComponent
+    }, 
+    {
+        path: 'car/:id',
+        component: CarDetailsComponent
     }
 ];
