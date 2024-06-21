@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { BranchService } from '../service/branch.service';
 import Branch from '../types/branch';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-employee',
@@ -54,11 +55,25 @@ export class AddEmployeeComponent implements OnInit{
 
     console.log(clientRegister);
 
-    this.registerService.register(clientRegister).subscribe((data)=>{
-      console.log("data is: ");
-      console.log(data);
-
+    this.registerService.register(clientRegister).subscribe(()=>{
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Employee registration complete",
+        showConfirmButton: false,
+        timer: 3500
+      });
       this.router.navigate(['']);
-    })
+    },
+    (error) => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Unable to register with this email: \n'" +this.register.get('email')!.value + "'",
+        showConfirmButton: false,
+        timer: 6000
+      });
+    }
+  );
   }
 }
