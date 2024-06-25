@@ -6,6 +6,7 @@ import { BranchService } from '../service/branch.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import Branch from '../types/branch';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-branch',
@@ -36,10 +37,27 @@ export class AddBranchComponent {
     console.log(branchRegister);
 
     this.branchService.createBranch(branchRegister).subscribe((data)=>{
-      console.log("data is: ");
-      console.log(data);
 
-      this.router.navigate(['']);
-    })
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "New branch successfully added",
+        showConfirmButton: false,
+        timer: 3500
+      });
+
+      this.register.reset();
+      this.router.navigate(['test']);
+    },
+    (error) => {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Branch already exist",
+        showConfirmButton: false,
+        timer: 6000
+      });
+    }
+  )
   }
 }

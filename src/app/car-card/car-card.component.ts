@@ -27,7 +27,8 @@ export class CarCardComponent {
   constructor(private router: Router) {}
 
   public showDetails() {
-    this.router.navigate([`car/${this.id}`])
+    this.router.navigate([`car/${this.id}`], {
+      state: { imageUrl: this.imageUrl }
+    });
   }
-
 }

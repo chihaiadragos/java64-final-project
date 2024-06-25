@@ -20,6 +20,7 @@ import { BookReservationComponent } from './book-reservation/book-reservation.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { BranchCardComponent } from './branch-card/branch-card.component';
 import { BranchesComponent } from './branches/branches.component';
+import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
 
 export const routes: Routes = [
     {
@@ -65,6 +66,10 @@ export const routes: Routes = [
     {
         path: 'test',
         component: TestComponent
+    },
+    {
+        path: 'customer-dashboard',
+        component: CustomerDashboardComponent
     },
     {
         path: 'reservation',

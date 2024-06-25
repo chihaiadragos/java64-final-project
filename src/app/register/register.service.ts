@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import RegisterClient from '../types/register';
 
@@ -11,6 +11,7 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   public register(registerClient: RegisterClient) {
-    return this.http.post<any>(this.url, registerClient);
+    const headers = new HttpHeaders({ 'X-Skip-Interceptor': '' });
+    return this.http.post<any>(this.url, registerClient, {headers});
   }
 }

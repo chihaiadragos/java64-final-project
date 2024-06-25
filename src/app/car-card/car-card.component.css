@@ -1,8 +1,34 @@
-.example-card {
+/* .example-card {
     max-width: 400px;
   }
   
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
+  } */
+     /* car-card.component.css */
+  .example-card {
+    width: 100%; /* Ensure card takes full width of the grid tile */
+    height: 100%; /* Ensure card takes full height of the grid tile */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
+  .car-image {
+    width: 450px;
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover; /* Ensure the image covers the entire area without distortion */
+  }
+  
+  .mat-grid-tile {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .mat-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }

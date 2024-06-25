@@ -1,21 +1,36 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import UpdateStatus from '../types/updateStatus';
 import { BranchService } from '../service/branch.service';
+import { LocalService } from '../login/service/local.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-branch-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule],
+  imports: [MatCardModule, MatButtonModule, CommonModule],
   templateUrl: './branch-card.component.html',
   styleUrl: './branch-card.component.css'
 })
-export class BranchCardComponent {
-  constructor(private router: Router, private branchService: BranchService) {}
-  
+export class BranchCardComponent implements OnInit{
+  type: string = "";
+  constructor(private router: Router, private branchService: BranchService, private localService: LocalService) {}
+  ngOnInit(): void {
+    const currentUserString = this.localService.getData("currentUser");
+    if (currentUserString) {
+
+      const currentUser = JSON.parse(currentUserString);
+
+      this.type = currentUser.accountType;
+    }
+
+  }
+  public isAdmin() {
+    return this.type === 'ADMIN';
+  }
   @Input() id: number = 0;
   @Input() city: String = "";
   @Input() address: String = "";

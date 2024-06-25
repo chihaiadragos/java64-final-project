@@ -26,7 +26,6 @@ export class LoginComponent {
 
   public loginNow(){
     const userLogin = new Login(this.login.get('email')?.value, this.login.get('password')?.value);
-    console.log(userLogin);
     this.loginService.login(userLogin).subscribe((data)=>{
       console.log(data);
       this.localService.saveData("currentUser", JSON.stringify({
@@ -36,7 +35,6 @@ export class LoginComponent {
         token: data.token
       }));
       this.router.navigate(['']);
-      console.log(data);
     })
  
   }

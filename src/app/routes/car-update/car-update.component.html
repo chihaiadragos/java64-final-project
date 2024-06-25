@@ -52,10 +52,14 @@
       </mat-form-field>
 
     <!-- FORM BRANCH ID VALUE -->
-    <mat-form-field class="example-full-width">
-        <mat-label>Branch ID</mat-label>
-        <input matInput type="number" formControlName="branchId" placeholder="enter branch ID">
-      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Branch</mat-label>
+        <mat-select formControlName="branchId" [(value)]="selectedBranch" >
+          @for (branch of branches; track branch) {
+            <mat-option [value]="branch.id">{{branch.city}}</mat-option>
+          }
+        </mat-select>
+    </mat-form-field>
 
     <div class="example-button-row">
         <button mat-button type="submit">Update</button>

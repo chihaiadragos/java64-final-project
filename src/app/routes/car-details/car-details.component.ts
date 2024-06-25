@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
 
 
 
+
+
 @Component({
   selector: 'app-car-details',
   standalone: true,
@@ -26,17 +28,40 @@ export class CarDetailsComponent implements OnInit{
 
   carId = Number(this.route.snapshot.params['id']);
   car: Car = new Car();
-  defaultImage = "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png";
-
+  imageUrl: string = '';
+  type: string = "";
+  user: any;
 
   constructor(private fleetService: FleetService, private route: ActivatedRoute, private router: Router, private localService: LocalService) {}
 
   ngOnInit() {
+
+    const currentUserString = this.localService.getData("currentUser");
+    if (currentUserString) {
+
+      const currentUser = JSON.parse(currentUserString);
+
+      this.type = currentUser.accountType;
+    }
+
+    this.imageUrl = history.state.imageUrl || '';
     this.fleetService.getCarById(this.carId).subscribe((result) => {
       this.car = result;
       console.log(result);
     })
 
+  }
+  public isAdmin() {
+    return this.type === 'ADMIN';
+  }
+  public isLoggedIn() {
+  
+    if (this.localService.getData("currentUser")){
+      this.user = JSON.parse(this.localService.getData("currentUser")!);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public gotoUpdate() {

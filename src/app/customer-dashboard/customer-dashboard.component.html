@@ -1,0 +1,28 @@
+<h2 style="color: wheat;">CONTROL PANEL</h2>
+<mat-tab-group
+  class="menu"
+  mat-stretch-tabs="false"
+  mat-align-tabs="start"
+  (selectedTabChange)="onTabChange($event)"
+>
+  <mat-tab label="Home">
+    <ng-container *ngIf="selectedTabIndex === 0">
+      <app-home></app-home>
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="Make a reservation">
+    <ng-container *ngIf="selectedTabIndex === 1">
+      <app-add-reservation></app-add-reservation>
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="Booking history">
+    <ng-container *ngIf="selectedTabIndex === 2">
+      <app-reservations></app-reservations>
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="Cities available">
+    <ng-container *ngIf="selectedTabIndex === 3">
+      <app-branches></app-branches>
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>

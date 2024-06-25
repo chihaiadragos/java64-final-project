@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit{
     this.type = "";
     this.userID = null;
     this.cdr.detectChanges();
+    this.ngOnInit();
     this.router.navigate(['/']);
   }
 

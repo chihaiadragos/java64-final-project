@@ -1,45 +1,64 @@
 <header>
-    <div class="navbar">
-      <div class="logo"><a href="#">Car Rent Company</a></div>
-      <ul class="links">
-        <li><a [routerLink]="['/']">Home</a></li>
-        <li><a [routerLink]="['/about']">About</a></li>
-        <li><a [routerLink]="['/fleet']">Fleet</a></li>
-        <li><a [routerLink]="['/contact']">Contact</a></li>
-        <li *ngIf="isAdmin()"><a [routerLink]="['/test']">TEST</a></li>
-        <!-- <i class="fa-solid fa-calendar-exclamation"></i> -->
-        <!-- <div class="example-button-row">
+  <div class="navbar">
+    <div class="logo"><a href="#">Car Rent Company</a></div>
+    <ul class="links">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li *ngIf="!isAdmin()"><a [routerLink]="['/about']">About</a></li>
+      <li *ngIf="!isLoggedIn()"><a [routerLink]="['/fleet']">Fleet</a></li>
+      <li *ngIf="!isAdmin()"><a [routerLink]="['/contact']">Contact</a></li>
+      <li *ngIf="isAdmin()"><a [routerLink]="['/test']">Control panel</a></li>
+      <li *ngIf="isLoggedIn() && !isAdmin()">
+        <a [routerLink]="['/customer-dashboard']">User Menu</a>
+      </li>
+
+      <!-- <i class="fa-solid fa-calendar-exclamation"></i> -->
+      <!-- <div class="example-button-row">
           <button mat-fab extended color="primary" >
             <mat-icon>calendar_today</mat-icon>
           </button>
       </div> -->
-        <li *ngIf="!isLoggedIn()"><a [routerLink]="['/register']">Register Now</a></li>
-        <li *ngIf="isLoggedIn()"><a [routerLink]="['/dashboard/', userID]">User Settings</a></li>
-      </ul>
-      <div *ngIf="isLoggedIn()">
-
-      
-        <p style="color: aliceblue"> [ {{this.user.accountType}} - userID: {{this.user.id}} ] {{this.user.fullName}}</p>
-        <a href="#" [routerLink]="['/']" class="action_btn" (click)="logOut()" style="text-decoration: none">Log out</a>
-        <div class="toggle_btn">
-          <i class="fa-solid fa-bars"></i>
-        </div>
-      
-      </div>
-      <div *ngIf="!isLoggedIn()"> 
-        <a href="#" [routerLink]="['/login']" class="action_btn" style="text-decoration: none">Log in</a>
-        <div class="toggle_btn">
-          <i class="fa-solid fa-bars"></i>
-        </div>
+      <li *ngIf="!isLoggedIn()">
+        <a [routerLink]="['/register']">Register Now</a>
+      </li>
+      <li *ngIf="isLoggedIn() && !isAdmin()">
+        <a [routerLink]="['/dashboard/', userID]">User Settings</a>
+      </li>
+    </ul>
+    <div *ngIf="isLoggedIn()">
+      <p style="color: aliceblue">{{ this.user.accountType }}</p>
+      <p style="color: aliceblue">{{ this.user.fullName }}</p>
+      <a
+        href="#"
+        [routerLink]="['/']"
+        class="action_btn"
+        (click)="logOut()"
+        style="text-decoration: none"
+        >Log out</a
+      >
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
       </div>
     </div>
-    <div class="dropdown_menu">
-      <li><a [routerLink]="['/']">Home</a></li>
-      <li><a [routerLink]="['/about']">About</a></li>
-      <li><a [routerLink]="['/fleet']">Fleet</a></li>
-      <li><a [routerLink]="['/contact']">Contact</a></li>
-      <li><a href="#" class="action_btn">Log in</a></li>
+    <div *ngIf="!isLoggedIn()">
+      <a
+        href="#"
+        [routerLink]="['/login']"
+        class="action_btn"
+        style="text-decoration: none"
+        >Log in</a
+      >
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
     </div>
+  </div>
+  <div class="dropdown_menu">
+    <li><a [routerLink]="['/']">Home</a></li>
+    <li><a [routerLink]="['/about']">About</a></li>
+    <li><a [routerLink]="['/fleet']">Fleet</a></li>
+    <li><a [routerLink]="['/contact']">Contact</a></li>
+    <li><a href="#" class="action_btn">Log in</a></li>
+  </div>
 </header>
 
 <!-- <button mat-button class="white" [matMenuTriggerFor]="menu">Menu</button> -->

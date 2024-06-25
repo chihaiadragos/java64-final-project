@@ -1,6 +1,17 @@
 .example-card{
     margin: 30px 30px 30px 30px;
+    height: 300px;
+    width: 800px;
 }
 mat-grid-tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: lightblue;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }

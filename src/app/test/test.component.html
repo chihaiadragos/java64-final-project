@@ -1,6 +1,6 @@
 <h2 style="color: wheat;">CONTROL PANEL</h2>
 <mat-tab-group
-  class="ggg"
+  class="menu"
   mat-stretch-tabs="false"
   mat-align-tabs="start"
   (selectedTabChange)="onTabChange($event)"
@@ -10,39 +10,34 @@
       <app-home></app-home>
     </ng-container>
   </mat-tab>
-  <mat-tab label="Make a reservation">
-    <ng-container *ngIf="selectedTabIndex === 1">
-      <app-add-reservation></app-add-reservation>
-    </ng-container>
-  </mat-tab>
   <mat-tab label="All reservations">
-    <ng-container *ngIf="selectedTabIndex === 2">
+    <ng-container *ngIf="selectedTabIndex === 1">
       <app-reservations></app-reservations>
     </ng-container>
   </mat-tab>
   <mat-tab label="Create an employee">
-    <ng-container *ngIf="selectedTabIndex === 3">
+    <ng-container *ngIf="selectedTabIndex === 2">
       <app-add-employee></app-add-employee>
     </ng-container>
   </mat-tab>
-  <mat-tab label="Upload a file">
-    <ng-container *ngIf="selectedTabIndex === 4">
-      <app-file-upload></app-file-upload>
-    </ng-container>
-  </mat-tab>
   <mat-tab label="Create a car">
-    <ng-container *ngIf="selectedTabIndex === 5">
+    <ng-container *ngIf="selectedTabIndex === 3 " >
       <app-add-car></app-add-car>
     </ng-container>
   </mat-tab>
-  <mat-tab label="Create a branch">
-    <ng-container *ngIf="selectedTabIndex === 6">
+  <mat-tab  label="Create a branch">
+    <ng-container *ngIf="selectedTabIndex === 4">
       <app-add-branch></app-add-branch>
     </ng-container>
   </mat-tab>
   <mat-tab label="All branches">
-    <ng-container *ngIf="selectedTabIndex === 7">
+    <ng-container *ngIf="selectedTabIndex === 5">
       <app-branches></app-branches>
+    </ng-container>
+  </mat-tab>
+  <mat-tab label="All cars">
+    <ng-container *ngIf="selectedTabIndex === 6">
+      <app-fleet></app-fleet>
     </ng-container>
   </mat-tab>
 </mat-tab-group>

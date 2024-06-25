@@ -1,3 +1,10 @@
-p{
+/* p{
     color: antiquewhite;
-}
+} */
+.grid-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px; /* Add some gap between the tiles */
+  }
+  

@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Car from '../../types/car';
 import Period from '../../types/period';
 import Banana from '../../types/newcar';
 import UpdateStatus from '../../types/updateStatus';
+import { LocalService } from '../../login/service/local.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,33 +19,43 @@ export class FleetService {
 
   constructor(private http: HttpClient) { }
 
+
   public getAllCars() {
     return this.http.get<Car[]>(this.url);
   }
 
   public getAllAvailableCars() {
-    return this.http.get<Car[]>(this.url5);
+    // const currentUserString = this.localService.getData('currentUser');
+    // const currentUser = JSON.parse(currentUserString!);
+    // const headers = new HttpHeaders({
+    //   "Authorization": `Bearer ${currentUser.token}`
+    // })
+    const headers = new HttpHeaders({ 'X-Skip-Interceptor': '' });
+    return this.http.get<Car[]>(this.url5, {headers});
   }
 
   public getCarById(id: number) {
-    return this.http.get<Car>(this.url + '/' + id);
+    const headers = new HttpHeaders({ 'X-Skip-Interceptor': '' });
+    return this.http.get<Car>(this.url + '/' + id, {headers});
   }
 
   public updateCar(car: Car) {
-    console.log(car);
-    console.log(this.url2)
+
     return this.http.put<Car>(this.url2, car);
   } 
 
   public deleteCar(updateStatus: UpdateStatus) {
+
     return this.http.put<any>(this.url2, updateStatus);
   } 
 
   public createCar(car: Banana) {
+
     return this.http.post<Banana>(this.url4, car);
   } 
 
   public availableCarsDuringPeriord(per: Period){
+
     return this.http.post<Car[]>(this.url3, per);
   }
 }

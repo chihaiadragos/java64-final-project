@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BranchService } from '../../service/branch.service';
 import Branch from '../../types/branch';
 import Swal from 'sweetalert2';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @Component({
@@ -29,7 +30,8 @@ import Swal from 'sweetalert2';
     MatButtonModule, 
     MatDividerModule, 
     MatIconModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   templateUrl: './car-update.component.html',
   styleUrl: './car-update.component.css'
@@ -38,6 +40,8 @@ export class CarUpdateComponent implements OnInit{
   carId = Number(this.route.snapshot.params['id']);
   car!: Car;
   carForm: FormGroup;
+  branches: Branch[] = [];
+  selectedBranch!: number;
 
   constructor(
     private branchService: BranchService, 
@@ -57,12 +61,18 @@ export class CarUpdateComponent implements OnInit{
       branchId: [0, Validators.required]
     });
   }
-  
+
   ngOnInit(): void {
-    console.log("oninit");
+
+    this.branchService.getAllAvailableBranches().subscribe((data) => {
+      this.branches = data;
+    })
+
     this.fleetService.getCarById(this.carId).subscribe((result) => {
       this.car = result;
-      console.log(this.car);
+
+      this.selectedBranch = this.car.branch!.id;
+
       this.carForm.patchValue({
         brand: this.car.brand,
         model: this.car.model,
@@ -72,14 +82,13 @@ export class CarUpdateComponent implements OnInit{
         mileage: this.car.mileage,
         amount: this.car.amount,
         imageUrl: this.car.imageUrl,
-        branchId: this.car.branch!.id
+        branchId: this.selectedBranch
       });
     });
 
   }
 
   public onSubmit() {
-    console.log("button pressed");
     
     if (this.carForm.valid) {
       const formValues = this.carForm.value;
@@ -93,7 +102,7 @@ export class CarUpdateComponent implements OnInit{
         mileage: formValues.mileage!,
         amount: formValues.amount!,
         imageUrl: formValues.imageUrl,
-        branch:  new Branch(formValues.branchId, '', '')
+        branch:  this.branches.find(branch => branch.id === formValues.branchId)!
       };
       console.log(updatedCar);
       this.fleetService.updateCar(updatedCar).subscribe((result) => {
@@ -110,28 +119,4 @@ export class CarUpdateComponent implements OnInit{
     }
   }
 
-    // const valYear = formValues.year ?? 0;
-    // const valMileage = formValues.mileage ?? 0;
-    // const valAmount = formValues.amount ?? 0;
-
-  //   this.myUpdatedCar = new Car(
-  //     this.carId,
-  //     String(formValues.brand),
-  //     String(formValues.model),
-  //     String(formValues.carBodyType),
-  //     valYear,
-  //     String(formValues.color),
-  //     valMileage,
-  //     valAmount,
-  //     String(formValues.imageUrl),
-  //     this.car.branch!
-  // )
-  
-
-    //   this.fleetService.updateCar(this.myUpdatedCar).subscribe((result)=>{
-
-    //   this.router.navigate(['/fleet']);
-    // });
-
-  
 }
