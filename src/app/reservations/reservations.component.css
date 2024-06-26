@@ -1,3 +1,39 @@
-table {
+/* table {
     width: 100%;
   }
+
+.status-pending {
+    font-weight: bold;
+    color: yellow;
+    background: rgba(13, 14, 13, 0.6) /*  with 60% opacity */
+
+
+
+button .mat-button {
+  color: inherit;
+}
+
+.status-pending {
+  font-weight: bold;
+  color: yellow;
+}
+
+.status-declined {
+  font-weight: bold;
+  color: red;
+}
+
+.status-accepted {
+  font-weight: bold;
+  color: green;
+}
+
+.status-completed {
+  font-weight: bold;
+  color: blue;
+}
+
+.status-refunded {
+  font-weight: bold;
+  color: violet;
+}

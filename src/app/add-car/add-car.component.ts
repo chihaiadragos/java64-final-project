@@ -70,6 +70,7 @@ export class AddCarComponent implements OnInit{
       this.register.get('amount')?.value,
       this.register.get('imageUrl')?.value,
       new Branch(this.register.get('branchId')?.value, '', ''),
+      "AVAILABLE",
     );
 
     console.log(carRegister);

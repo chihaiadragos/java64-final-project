@@ -102,7 +102,8 @@ export class CarUpdateComponent implements OnInit{
         mileage: formValues.mileage!,
         amount: formValues.amount!,
         imageUrl: formValues.imageUrl,
-        branch:  this.branches.find(branch => branch.id === formValues.branchId)!
+        branch:  this.branches.find(branch => branch.id === formValues.branchId)!,
+        status: "AVAILABLE"
       };
       console.log(updatedCar);
       this.fleetService.updateCar(updatedCar).subscribe((result) => {
@@ -114,7 +115,7 @@ export class CarUpdateComponent implements OnInit{
           timer: 1500
         });
         console.log(result);
-        this.router.navigate(['/fleet']);
+        this.router.navigate(['/test']);
       });
     }
   }

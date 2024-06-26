@@ -12,3 +12,6 @@ section#hero{
     font-size: 3rem;
     margin-bottom: 1rem;
 }
+mat-grid-tile {
+    background: lightblue;
+  }

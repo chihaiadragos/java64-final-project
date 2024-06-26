@@ -24,7 +24,7 @@
   </div>
   
 
-  <mat-grid-list class="grid-list"  rowHeight="600" cols="3">
+  <mat-grid-list class="grid-list"  rowHeight="600" [cols]="breakpoint">
 
 
     @for (car of cars; track car; let i = $index) {
@@ -38,7 +38,8 @@
         [color]="car.color"
         [mileage]="car.mileage" 
         [amount]="car.amount" 
-        [imageUrl]="car.imageUrl">
+        [imageUrl]="car.imageUrl"
+        [status]="car.status">
       </app-car-card>
     </mat-grid-tile>
     }

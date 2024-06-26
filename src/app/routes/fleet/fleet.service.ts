@@ -21,15 +21,19 @@ export class FleetService {
 
 
   public getAllCars() {
-    return this.http.get<Car[]>(this.url);
+    const headers = new HttpHeaders({ 'X-Skip-Interceptor': '' });
+    return this.http.get<Car[]>(this.url, {headers});
   }
 
   public getAllAvailableCars() {
+
+    //Avoided this code repetition with Interceptor
     // const currentUserString = this.localService.getData('currentUser');
     // const currentUser = JSON.parse(currentUserString!);
     // const headers = new HttpHeaders({
     //   "Authorization": `Bearer ${currentUser.token}`
     // })
+
     const headers = new HttpHeaders({ 'X-Skip-Interceptor': '' });
     return this.http.get<Car[]>(this.url5, {headers});
   }

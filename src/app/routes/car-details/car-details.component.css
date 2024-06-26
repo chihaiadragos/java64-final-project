@@ -41,8 +41,11 @@ mat-grid-tile {
     background-color: lightblue;
     margin-left: 5px;
   }
-  .change {
+  .changeAvailable {
     background-color: lightgreen;
+  }
+  .changeUnavailable {
+    background-color: lightcoral;
   }
   
   @keyframes pulse {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -46,7 +46,7 @@ export class AddReservationComponent implements OnInit{
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
-
+  breakpoint: number = 3;
   period!: Period;
   periodLength: number | null = null;
   startString: string = '';
@@ -55,19 +55,12 @@ export class AddReservationComponent implements OnInit{
   defaultImage = "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png";
 
   constructor(private fleetService: FleetService, private localService: LocalService, private formBuilder: FormBuilder) {}
-  // periodForm: FormGroup;
-
-  // constructor(
-  //   private formBuilder: FormBuilder,
-  //   this.periodForm = this.formBuilder.group({
-  //     startDate: ['', Validators.required],
-  //     endDate: ['', Validators.required]
-  //   })
-  // )
-
 
   ngOnInit(): void {
 
+
+    this.setBreakpoint(window.innerWidth);
+  
     this.fleetService.getAllAvailableCars().subscribe((data) => {
       this.cars = data;
       this.cars.forEach((element) => {
@@ -95,11 +88,13 @@ export class AddReservationComponent implements OnInit{
     console.log('Start Date:', this.startString);
     console.log('End Date:', this.endString);
 
-    // this.localService.saveData('currentReservation', JSON.stringify({
-    //   start: this.startString,
-    //   end: this.endString,
-    //   length: this.periodLength
-    // }));
+  }
+  setBreakpoint(width: number) {
+    this.breakpoint = (width <= 920) ? 1 : (width <= 1350) ? 2 : 3;
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.setBreakpoint(event.target.innerWidth);
   }
   onSubmit() {
     console.log('Start Date:', this.startString);
@@ -118,10 +113,8 @@ export class AddReservationComponent implements OnInit{
       this.periodLength = null;
       console.error('Invalid date range');
     }
-    // 
-    //IMPORTANT SHIT HERE - FOR RESERVATION 
-//????????????????????????????????
-    this.localService.saveData('asdf', JSON.stringify({
+    
+    this.localService.saveData('PeriodData', JSON.stringify({
       start: this.startString,
       end: this.endString,
       length: this.periodLength

@@ -1,70 +1,93 @@
 <div class="align">
-    <form class="example-form" [formGroup]="carForm" (ngSubmit)="onSubmit()">
-        <!-- FORM TITLE -->
-    <h1>Update Car {{carForm.value.brand}} - identifier: {{carId}}</h1>
+  <form class="example-form" [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    <!-- FORM TITLE -->
+    <h1>Update car <br />ID: {{ carId }}<br /></h1>
 
     <!-- FORM BRAND VALUE -->
     <mat-form-field class="example-full-width">
-        <mat-label>Brand</mat-label>
-        <input matInput type="text" formControlName="brand" placeholder="enter brand name">
-      </mat-form-field>
+      <mat-label>Brand</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="brand"
+        placeholder="enter brand name"
+      />
+    </mat-form-field>
 
     <!-- FORM CAR MODEL VALUE -->
     <mat-form-field class="example-full-width">
-        <mat-label>Model</mat-label>
-        <input matInput type="text" formControlName="model" placeholder="enter model name">
-      </mat-form-field>
+      <mat-label>Model</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="model"
+        placeholder="enter model name"
+      />
+    </mat-form-field>
 
     <!-- FORM CAR BODY TYPE VALUE -->
-    <mat-form-field class="example-full-width">
+    <!-- <mat-form-field class="example-full-width">
         <mat-label>Car Body</mat-label>
         <input matInput type="text" formControlName="carBodyType" placeholder="select body type">
-      </mat-form-field>
+      </mat-form-field> -->
 
     <!-- FORM YEAR VALUE -->
-    <mat-form-field class="example-full-width">
+    <!-- <mat-form-field class="example-full-width">
         <mat-label>Production year</mat-label>
         <input matInput type="number" formControlName="year" placeholder="enter year of production">
-      </mat-form-field>
+      </mat-form-field> -->
 
     <!-- FORM COLOR VALUE -->
     <mat-form-field class="example-full-width">
-        <mat-label>Color</mat-label>
-        <input matInput type="text" formControlName="color" placeholder="enter color">
-      </mat-form-field>
+      <mat-label>Color</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="color"
+        placeholder="enter color"
+      />
+    </mat-form-field>
 
     <!-- FORM AMOUNT VALUE -->
     <mat-form-field class="example-full-width">
-        <mat-label>Rental price per day</mat-label>
-        <input matInput type="number" formControlName="amount" placeholder="enter rental amount">
-      </mat-form-field>
+      <mat-label>Rental price per day</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="amount"
+        placeholder="enter rental amount"
+      />
+    </mat-form-field>
 
     <!-- FORM MILEAGE VALUE -->
-    <mat-form-field class="example-full-width">
+    <!-- <mat-form-field class="example-full-width">
         <mat-label>Mileage</mat-label>
         <input matInput type="number" formControlName="amount" placeholder="enter car milleage">
-      </mat-form-field>
+      </mat-form-field> -->
 
     <!-- FORM IMAGEURL VALUE -->
     <mat-form-field class="example-full-width">
-        <mat-label>ImageURL</mat-label>
-        <input matInput type="text" formControlName="imageUrl" placeholder="enter imageUrl">
-      </mat-form-field>
+      <mat-label>ImageURL</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="imageUrl"
+        placeholder="enter imageUrl"
+      />
+    </mat-form-field>
 
     <!-- FORM BRANCH ID VALUE -->
-      <mat-form-field>
-        <mat-label>Branch</mat-label>
-        <mat-select formControlName="branchId" [(value)]="selectedBranch" >
-          @for (branch of branches; track branch) {
-            <mat-option [value]="branch.id">{{branch.city}}</mat-option>
-          }
-        </mat-select>
+    <mat-form-field>
+      <mat-label>Branch</mat-label>
+      <mat-select formControlName="branchId" [(value)]="selectedBranch">
+        @for (branch of branches; track branch) {
+        <mat-option [value]="branch.id">{{ branch.city }}</mat-option>
+        }
+      </mat-select>
     </mat-form-field>
 
     <div class="example-button-row">
-        <button mat-button type="submit">Update</button>
+      <button mat-button type="submit">Update</button>
     </div>
-
-</form>
-
+  </form>
 </div>

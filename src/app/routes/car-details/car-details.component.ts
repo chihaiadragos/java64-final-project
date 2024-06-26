@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FleetService } from '../fleet/fleet.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Car from '../../types/car';
@@ -31,7 +31,7 @@ export class CarDetailsComponent implements OnInit{
   imageUrl: string = '';
   type: string = "";
   user: any;
-  status: string = 'UNAVAILABLE';
+  status: string = "";
   constructor(private fleetService: FleetService, private route: ActivatedRoute, private router: Router, private localService: LocalService) {}
 
   ngOnInit() {
@@ -43,13 +43,21 @@ export class CarDetailsComponent implements OnInit{
 
       this.type = currentUser.accountType;
     }
-
+    this.status = history.state.status || '';
     this.imageUrl = history.state.imageUrl || '';
     this.fleetService.getCarById(this.carId).subscribe((result) => {
       this.car = result;
       console.log(result);
     })
 
+  }
+  statusCheck(status: string) {
+    if (status === "UNAVAILABLE") {
+      return "AVAILABLE";
+    } else if (status === "AVAILABLE") {
+      return "UNAVAILABLE";
+    }
+    return "";
   }
   isAvailable() {
     return this.status === 'AVAILABLE';
@@ -81,7 +89,7 @@ export class CarDetailsComponent implements OnInit{
       this.router.navigate([`book-reservation`]);
   }
 
-  public deleteCar() {
+  public updateStatus() {
     Swal.fire({
       title: "Are you sure?",
       text: "",
@@ -89,16 +97,16 @@ export class CarDetailsComponent implements OnInit{
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Update!"
     }).then((result) => {
       if (result.isConfirmed) {
-        this.fleetService.deleteCar(new UpdateStatus(this.carId, "UNAVAILABLE")).subscribe(data => {
+        this.fleetService.deleteCar(new UpdateStatus(this.carId, this.statusCheck(this.status))).subscribe(data => {
       
         })
         this.router.navigate([`fleet`]);
         Swal.fire({
-          title: "Deleted!",
-          text: "Car has been deleted.",
+          title: "Updated!",
+          text: "Car status has been updated to " + this.status,
           icon: "success"
         });
       }

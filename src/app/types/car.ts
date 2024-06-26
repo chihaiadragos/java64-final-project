@@ -11,7 +11,7 @@ class Car {
     public amount: number;
     public imageUrl: String;
     public branch: Branch  | null;
-    // public status: String;
+    public status: String;
 
     constructor();
 
@@ -25,8 +25,8 @@ class Car {
       mileage: number,
       amount: number,
       imageUrl: string,
-      branch: Branch | null
-      // status: string
+      branch: Branch | null,
+      status: string
     );
     
     constructor(
@@ -39,8 +39,8 @@ class Car {
       mileage?: number,
       amount?: number,
       imageUrl?: string,
-      branch?: Branch | null
-      // status?: String
+      branch?: Branch | null,
+      status?: String
     ) {
       this.id = id ?? 0;
       this.brand = brand ?? '';
@@ -52,7 +52,7 @@ class Car {
       this.amount = amount ?? 0;
       this.imageUrl = imageUrl ?? '';
       this.branch = branch ?? null;
-      // this.status = status ?? '';
+      this.status = status ?? '';
     }
   }
 export default Car;

@@ -31,8 +31,8 @@
       Book now
     </button>
     <button *ngIf="isAdmin()" mat-button (click)="gotoUpdate()">Update</button>
-    <button *ngIf="isAdmin()" mat-button (click)="deleteCar()">Delete</button>
-    <button class="change" *ngIf="status === 'UNAVAILABLE'" mat-button (click)="deleteCar()">
+    <!-- <button *ngIf="isAdmin()" mat-button (click)="deleteCar()">Delete</button> -->
+    <button [ngClass]="{ 'changeAvailable': !isAvailable(), 'changeUnavailable': isAvailable() }" *ngIf="isAdmin()" (click)="updateStatus()" mat-button >
       Change status
     </button>
   </mat-card-actions>

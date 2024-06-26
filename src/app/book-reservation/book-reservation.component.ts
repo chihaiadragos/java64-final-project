@@ -82,7 +82,7 @@ export class BookReservationComponent implements OnInit{
       console.log(currentReservation.carBranchId);
     
 
-    const asdf = this.localService.getData("asdf");
+    const asdf = this.localService.getData("PeriodData");
     const qwer = JSON.parse(asdf!);
     console.log(qwer.start);
     console.log(qwer.end)
@@ -111,9 +111,9 @@ export class BookReservationComponent implements OnInit{
     })
 
     const finalPrice: number = this.car?.amount! * qwer.length;
-    console.log("actual car is: " + this.car);
+    // console.log("actual car is: " + this.car);
     console.log(qwer.length);
-    console.log("final price is: " + finalPrice);
+    // console.log("final price is: " + finalPrice);
     
     this.reservationForm.patchValue({
       dateFrom: qwer.start,
@@ -132,7 +132,7 @@ export class BookReservationComponent implements OnInit{
 
     const asdf = this.localService.getData("asdf");
     const qwer = JSON.parse(asdf!);
-    console.log(qwer.length);
+    // console.log(qwer.length);
     
     if (this.reservationForm.valid) {
       const formValues = this.reservationForm.value;
@@ -154,7 +154,7 @@ export class BookReservationComponent implements OnInit{
           showConfirmButton: false,
           timer: 3500
         });
-        this.router.navigate(['']);
+        this.router.navigate(['customer-dashboard']);
       })
     }
 

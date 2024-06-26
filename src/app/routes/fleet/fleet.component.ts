@@ -42,7 +42,7 @@ export class FleetComponent implements OnInit {
     });
   }
   setBreakpoint(width: number) {
-    this.breakpoint = (width <= 500) ? 1 : (width <= 1350) ? 2 : 3;
+    this.breakpoint = (width <= 920) ? 1 : (width <= 1350) ? 2 : 3;
   }
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
