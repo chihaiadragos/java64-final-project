@@ -1,6 +1,11 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>{{ car.brand }}</mat-card-title>
+    <mat-card-title>
+      <div class="container">
+        <div [ngClass]="{ 'blob': isAvailable(), 'blobred': !isAvailable() }"></div>
+        {{ car.brand }}
+      </div>
+    </mat-card-title>
     <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image [src]="imageUrl" />
@@ -22,8 +27,13 @@
     </mat-grid-tile>
   </mat-grid-list>
   <mat-card-actions>
-    <button *ngIf="isLoggedIn()" mat-button (click)="bookNow()">Book now</button>
+    <button *ngIf="isLoggedIn() && !isAdmin()" mat-button (click)="bookNow()">
+      Book now
+    </button>
     <button *ngIf="isAdmin()" mat-button (click)="gotoUpdate()">Update</button>
     <button *ngIf="isAdmin()" mat-button (click)="deleteCar()">Delete</button>
+    <button class="change" *ngIf="status === 'UNAVAILABLE'" mat-button (click)="deleteCar()">
+      Change status
+    </button>
   </mat-card-actions>
 </mat-card>

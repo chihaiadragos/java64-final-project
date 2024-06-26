@@ -16,6 +16,7 @@ import { AddCarComponent } from '../add-car/add-car.component';
 import { AddBranchComponent } from '../add-branch/add-branch.component';
 import { BranchesComponent } from '../branches/branches.component';
 import { FleetComponent } from '../routes/fleet/fleet.component';
+import { GeneralDashboardComponent } from '../general-dashboard/general-dashboard.component';
 
 @Component({
   selector: 'app-test',
@@ -37,7 +38,8 @@ import { FleetComponent } from '../routes/fleet/fleet.component';
     AddCarComponent,
     AddBranchComponent,
     BranchesComponent,
-    FleetComponent
+    FleetComponent,
+    GeneralDashboardComponent
   ],
 })
 export class TestComponent {

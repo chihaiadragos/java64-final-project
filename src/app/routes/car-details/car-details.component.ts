@@ -31,7 +31,7 @@ export class CarDetailsComponent implements OnInit{
   imageUrl: string = '';
   type: string = "";
   user: any;
-
+  status: string = 'UNAVAILABLE';
   constructor(private fleetService: FleetService, private route: ActivatedRoute, private router: Router, private localService: LocalService) {}
 
   ngOnInit() {
@@ -50,6 +50,9 @@ export class CarDetailsComponent implements OnInit{
       console.log(result);
     })
 
+  }
+  isAvailable() {
+    return this.status === 'AVAILABLE';
   }
   public isAdmin() {
     return this.type === 'ADMIN';

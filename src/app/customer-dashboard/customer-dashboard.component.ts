@@ -11,6 +11,7 @@ import { AddReservationComponent } from '../add-reservation/add-reservation.comp
 import { BranchesComponent } from '../branches/branches.component';
 import { ReservationsComponent } from '../reservations/reservations.component';
 import { HomeComponent } from '../routes/home/home.component';
+import { GeneralDashboardComponent } from '../general-dashboard/general-dashboard.component';
 
 @Component({
   selector: 'app-customer-dashboard',
@@ -27,6 +28,7 @@ import { HomeComponent } from '../routes/home/home.component';
     MatGridListModule,
     MatTabsModule,
     BranchesComponent,
+    GeneralDashboardComponent
   ],
   templateUrl: './customer-dashboard.component.html',
   styleUrl: './customer-dashboard.component.css',

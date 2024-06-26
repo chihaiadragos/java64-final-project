@@ -5,9 +5,9 @@
   mat-align-tabs="start"
   (selectedTabChange)="onTabChange($event)"
 >
-  <mat-tab label="Home">
+  <mat-tab label="Dashboard">
     <ng-container *ngIf="selectedTabIndex === 0">
-      <app-home></app-home>
+      <app-general-dashboard></app-general-dashboard>
     </ng-container>
   </mat-tab>
   <mat-tab label="All reservations">

@@ -21,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BranchCardComponent } from './branch-card/branch-card.component';
 import { BranchesComponent } from './branches/branches.component';
 import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
+import { GeneralDashboardComponent } from './general-dashboard/general-dashboard.component';
 
 export const routes: Routes = [
     {
@@ -70,6 +71,10 @@ export const routes: Routes = [
     {
         path: 'customer-dashboard',
         component: CustomerDashboardComponent
+    },
+    {
+        path: 'general-dashboard',
+        component: GeneralDashboardComponent
     },
     {
         path: 'reservation',
