@@ -130,7 +130,7 @@ export class BookReservationComponent implements OnInit{
 
   public onSubmit() {
 
-    const asdf = this.localService.getData("asdf");
+    const asdf = this.localService.getData("PeriodData");
     const qwer = JSON.parse(asdf!);
     // console.log(qwer.length);
     
@@ -155,7 +155,17 @@ export class BookReservationComponent implements OnInit{
           timer: 3500
         });
         this.router.navigate(['customer-dashboard']);
-      })
+      },
+      (error) => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Insuficient founds",
+          showConfirmButton: false,
+          timer: 6000
+        });
+      }
+      )
     }
 
   }
