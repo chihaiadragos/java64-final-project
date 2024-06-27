@@ -13,55 +13,55 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MatCardModule, MatButtonModule, CommonModule],
   templateUrl: './branch-card.component.html',
-  styleUrl: './branch-card.component.css'
+  styleUrl: './branch-card.component.css',
 })
-export class BranchCardComponent implements OnInit{
-  type: string = "";
-  constructor(private router: Router, private branchService: BranchService, private localService: LocalService) {}
+export class BranchCardComponent implements OnInit {
+  type: string = '';
+  constructor(
+    private router: Router,
+    private branchService: BranchService,
+    private localService: LocalService
+  ) {}
   ngOnInit(): void {
-    const currentUserString = this.localService.getData("currentUser");
+    const currentUserString = this.localService.getData('currentUser');
     if (currentUserString) {
-
       const currentUser = JSON.parse(currentUserString);
 
       this.type = currentUser.accountType;
     }
-
   }
   public isAdmin() {
     return this.type === 'ADMIN';
   }
   @Input() id: number = 0;
-  @Input() city: String = "";
-  @Input() address: String = "";
+  @Input() city: String = '';
+  @Input() address: String = '';
 
   public update() {
-    //!!!!!!!!!!!!!! check route
     this.router.navigate(['update-branch']);
   }
   public delete() {
-    //!!!!!!!!!!!!!! check route
     Swal.fire({
-      title: "Are you sure?",
-      text: "",
-      icon: "warning",
+      title: 'Are you sure?',
+      text: '',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // this.fleetService.deleteCar(new UpdateStatus(this.carId, "UNAVAILABLE")).subscribe(data => {}
-        this.branchService.deleteBranch(new UpdateStatus(this.id, "UNAVAILABLE")).subscribe(data => {
-          console.log(data);
-        })
+        this.branchService
+          .deleteBranch(new UpdateStatus(this.id, 'UNAVAILABLE'))
+          .subscribe((data) => {
+            console.log(data);
+          });
         Swal.fire({
-          title: "Deleted!",
-          text: "Branch has been deleted.",
-          icon: "success"
+          title: 'Deleted!',
+          text: 'Branch has been deleted.',
+          icon: 'success',
         });
       }
     });
-    
   }
 }

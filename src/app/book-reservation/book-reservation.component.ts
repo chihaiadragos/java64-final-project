@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import Branch from '../types/branch';
 import Car from '../types/car';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalService } from '../login/service/local.service';
 import { FleetService } from '../routes/fleet/fleet.service';
@@ -10,7 +16,12 @@ import Reservation from '../types/reservation';
 import Swal from 'sweetalert2';
 import Customer from '../types/customer';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent } from '@angular/material/dialog';
+import {
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,28 +32,27 @@ import ResCustomer from '../types/resCustomer';
 import ResCar from '../types/resCar';
 import ResBranch from '../types/resBranch';
 
-
 @Component({
   selector: 'app-book-reservation',
   standalone: true,
-  imports: [    
-    MatButtonModule, 
-    MatDialogActions, 
-    MatDialogClose, 
-    MatDialogTitle, 
-    MatDialogContent, 
-    FormsModule, 
-    MatFormFieldModule, 
+  imports: [
+    MatButtonModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+    FormsModule,
+    MatFormFieldModule,
     MatInputModule,
-    MatButtonModule, 
-    MatDividerModule, 
-    MatIconModule, 
-    ReactiveFormsModule],
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './book-reservation.component.html',
-  styleUrl: './book-reservation.component.css'
+  styleUrl: './book-reservation.component.css',
 })
-export class BookReservationComponent implements OnInit{
-
+export class BookReservationComponent implements OnInit {
   car!: Car;
   branch!: Branch;
   reservation!: Reservation;
@@ -50,14 +60,14 @@ export class BookReservationComponent implements OnInit{
   carAmount!: number;
 
   constructor(
-    private router: Router, 
-    private fleetService: FleetService, 
-    private formBuilder: FormBuilder, 
-    private localService: LocalService, 
+    private router: Router,
+    private fleetService: FleetService,
+    private formBuilder: FormBuilder,
+    private localService: LocalService,
     private branchService: BranchService,
     private customerService: CustomerService,
     private reservationService: ReservationService
-  ){
+  ) {
     this.reservationForm = this.formBuilder.group({
       customerId: [0, Validators.required],
       customerFullName: ['', Validators.required],
@@ -68,72 +78,75 @@ export class BookReservationComponent implements OnInit{
       dateTo: ['', Validators.required],
       branchId: [0, Validators.required],
       pickupCity: [0, Validators.required],
-      cost: [0, Validators.required]
+      cost: [0, Validators.required],
     });
   }
 
   ngOnInit(): void {
-    const currentReservationString = this.localService.getData("currentReservation");
-   
+    const currentReservationString =
+      this.localService.getData('currentReservation');
 
-      const currentReservation = JSON.parse(currentReservationString!);
+    const currentReservation = JSON.parse(currentReservationString!);
 
-      console.log(currentReservation.carId);
-      console.log(currentReservation.carBranchId);
-    
+    console.log(currentReservation.carId);
+    console.log(currentReservation.carBranchId);
 
-    const asdf = this.localService.getData("PeriodData");
-    const qwer = JSON.parse(asdf!);
-    console.log(qwer.start);
-    console.log(qwer.end)
-    console.log(qwer.length)
+    const periodData = this.localService.getData('PeriodData');
+    const periodDataString = JSON.parse(periodData!);
+    console.log(periodDataString.start);
+    console.log(periodDataString.end);
+    console.log(periodDataString.length);
 
-    const clientData = this.localService.getData("currentUser");
+    const clientData = this.localService.getData('currentUser');
     const clientDataString = JSON.parse(clientData!);
     console.log(clientDataString.fullName);
 
-    this.fleetService.getCarById(currentReservation.carId).subscribe((result) => {
-      this.car = result;
-      this.reservationForm.patchValue({
-        carId: this.car.id,
-        carModel: this.car.model,
-        carBrand: this.car.brand,
-        cost: this.car.amount
-      })
-    })
+    this.fleetService
+      .getCarById(currentReservation.carId)
+      .subscribe((result) => {
+        this.car = result;
+        this.reservationForm.patchValue({
+          carId: this.car.id,
+          carModel: this.car.model,
+          carBrand: this.car.brand,
+          cost: this.car.amount * periodDataString.length,
+        });
+        console.log(this.car.amount);
+      });
 
-    this.branchService.getBranchById(currentReservation.carBranchId).subscribe(data => {
-      this.branch = data;
-      this.reservationForm.patchValue({
-        branchId: this.branch.id,
-        pickupCity: this.branch.city
-      })
-    })
+    this.branchService
+      .getBranchById(currentReservation.carBranchId)
+      .subscribe((data) => {
+        this.branch = data;
+        this.reservationForm.patchValue({
+          branchId: this.branch.id,
+          pickupCity: this.branch.city,
+        });
+      });
 
-    const finalPrice: number = this.car?.amount! * qwer.length;
-    // console.log("actual car is: " + this.car);
-    console.log(qwer.length);
-    // console.log("final price is: " + finalPrice);
-    
+
+    console.log(periodDataString.length);
+
+
     this.reservationForm.patchValue({
-      dateFrom: qwer.start,
-      dateTo: qwer.end,
-      customerFullName: clientDataString.fullName
+      dateFrom: periodDataString.start,
+      dateTo: periodDataString.end,
+      customerFullName: clientDataString.fullName,
     });
 
-    this.customerService.getCustomerByUserId(clientDataString.id).subscribe(data =>{
-      this.reservationForm.patchValue({
-        customerId: data.id
+    this.customerService
+      .getCustomerByUserId(clientDataString.id)
+      .subscribe((data) => {
+        this.reservationForm.patchValue({
+          customerId: data.id,
+        });
       });
-    })
   }
 
   public onSubmit() {
+    const periodData = this.localService.getData('PeriodData');
+    const periodDataString = JSON.parse(periodData!);
 
-    const asdf = this.localService.getData("PeriodData");
-    const qwer = JSON.parse(asdf!);
-    // console.log(qwer.length);
-    
     if (this.reservationForm.valid) {
       const formValues = this.reservationForm.value;
       const saveReservation: Reservation = {
@@ -143,31 +156,30 @@ export class BookReservationComponent implements OnInit{
         dateFrom: formValues.dateFrom,
         dateTo: formValues.dateTo,
         branch: new ResBranch(formValues.branchId),
-        amount: formValues.cost * qwer.length
+        amount: formValues.cost * periodDataString.length,
       };
       console.log(saveReservation);
-      this.reservationService.createReservation(saveReservation).subscribe(data => {
-        Swal.fire({
-          position: 'center',
-          icon: "success",
-          title: "Reservation submited!",
-          showConfirmButton: false,
-          timer: 3500
-        });
-        this.router.navigate(['customer-dashboard']);
-      },
-      (error) => {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "Insuficient founds",
-          showConfirmButton: false,
-          timer: 6000
-        });
-      }
-      )
+      this.reservationService.createReservation(saveReservation).subscribe(
+        (data) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Reservation submited!',
+            showConfirmButton: false,
+            timer: 3500,
+          });
+          this.router.navigate(['customer-dashboard']);
+        },
+        (error) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Insuficient founds',
+            showConfirmButton: false,
+            timer: 4000,
+          });
+        }
+      );
     }
-
   }
-
 }

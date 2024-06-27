@@ -12,6 +12,7 @@ import { FleetComponent } from '../routes/fleet/fleet.component';
 import { FleetService } from '../routes/fleet/fleet.service';
 import Car from '../types/car';
 import Banana from '../types/newcar';
+import Swal from 'sweetalert2';
 
 interface CarBodyType {
   value: string;
@@ -76,10 +77,16 @@ export class AddCarComponent implements OnInit{
     console.log(carRegister);
 
     this.fleetService.createCar(carRegister).subscribe((data)=>{
-      console.log("data is: ");
-      console.log(data);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "New car successfully added",
+        showConfirmButton: false,
+        timer: 3500
+      });
 
-      this.router.navigate(['']);
+      this.register.reset();
+    
     })
   }
 }
