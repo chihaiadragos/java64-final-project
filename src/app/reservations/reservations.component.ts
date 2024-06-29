@@ -42,7 +42,7 @@ export class ReservationsComponent implements OnInit {
     }
     if (this.type === 'ADMIN') {
       this.reservationService.getAllReservations().subscribe((data) => {
-        this.displayedColumns.push('details');
+        this.displayedColumns.push('actions');
         this.reservations = data;
         this.sortReservationsById();
         console.log(this.reservations);
@@ -78,13 +78,7 @@ export class ReservationsComponent implements OnInit {
     return this.type === 'ADMIN';
   }
   updateReservation() {
-    console.log("Asdafsgsdgrsg");
+    console.log("Update reservation");
     
-    // console.log(element.id);
-    
-    // this.reservationService.updateReservation(new UpdateStatus(element.id, "PENDING")).subscribe(data => {
-      
-    // })
-    // this.router.navigate(['/test']);
   }
 }

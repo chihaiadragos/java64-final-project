@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>
       <div class="container">
-        <div [ngClass]="{ 'blob': isAvailable(), 'blobred': !isAvailable() }"></div>
+        <div [ngClass]="{ blob: isAvailable(), blobred: !isAvailable() }"></div>
         {{ model }}
       </div>
     </mat-card-title>
@@ -12,7 +12,7 @@
   <mat-card-content>
     <p>{{ brand }}</p>
     <p>Year: {{ year }}</p>
-    <p style="color: cadetblue;">{{ amount }}$ /day</p>
+    <p style="color: cadetblue">{{ amount }}$ /day</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="showDetails()">Details</button>

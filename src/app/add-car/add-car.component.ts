@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalService } from '../login/service/local.service';
 import { RegisterService } from '../register/register.service';
@@ -21,45 +27,51 @@ interface CarBodyType {
 @Component({
   selector: 'app-add-car',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, MatSelectModule, MatFormFieldModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+  ],
   templateUrl: './add-car.component.html',
-  styleUrl: './add-car.component.css'
+  styleUrl: './add-car.component.css',
 })
-export class AddCarComponent implements OnInit{
+export class AddCarComponent implements OnInit {
   allBranches: Branch[] = [];
 
   allCarBodyTypes: CarBodyType[] = [
-    {value: "HATCHBACK"},
-    {value: "SEDAN"},
-    {value: "SUV"},
-    {value: "COUPE"},
-    {value: "CONVERTIBLE"},
-    {value: "PICKUP_TRUCK"}
-  ]
-  constructor(private router: Router, private fleetService: FleetService, private formBuilder: FormBuilder, private localService: LocalService, private branchService: BranchService){}
+    { value: 'HATCHBACK' },
+    { value: 'SEDAN' },
+    { value: 'SUV' },
+    { value: 'COUPE' },
+    { value: 'CONVERTIBLE' },
+    { value: 'PICKUP_TRUCK' },
+  ];
+  constructor(
+    private router: Router,
+    private fleetService: FleetService,
+    private formBuilder: FormBuilder,
+    private localService: LocalService,
+    private branchService: BranchService
+  ) {}
   ngOnInit(): void {
-    this.branchService.getAllAvailableBranches().subscribe(data => {
+    this.branchService.getAllAvailableBranches().subscribe((data) => {
       this.allBranches = data;
-    })
+    });
   }
-  register: FormGroup = this.formBuilder.group(
-    {
-      brand: ['', Validators.required],
-      model: ['', Validators.required],
-      carBodyType: ['', Validators.required],
-      year: [0, Validators.required],
-      color: ['', Validators.required],
-      mileage: [0, Validators.required],
-      amount: [0, Validators.required],
-      imageUrl: ['', Validators.required],
-      branchId: ['', Validators.required]
-    }
-  );
-
+  register: FormGroup = this.formBuilder.group({
+    brand: ['', Validators.required],
+    model: ['', Validators.required],
+    carBodyType: ['', Validators.required],
+    year: [0, Validators.required],
+    color: ['', Validators.required],
+    mileage: [0, Validators.required],
+    amount: [0, Validators.required],
+    imageUrl: ['', Validators.required],
+    branchId: ['', Validators.required],
+  });
 
   public registerNow() {
-    
-
     const carRegister = new Car(
       -1,
       this.register.get('brand')?.value,
@@ -71,22 +83,21 @@ export class AddCarComponent implements OnInit{
       this.register.get('amount')?.value,
       this.register.get('imageUrl')?.value,
       new Branch(this.register.get('branchId')?.value, '', ''),
-      "AVAILABLE",
+      'AVAILABLE'
     );
 
     console.log(carRegister);
 
-    this.fleetService.createCar(carRegister).subscribe((data)=>{
+    this.fleetService.createCar(carRegister).subscribe((data) => {
       Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "New car successfully added",
+        position: 'center',
+        icon: 'success',
+        title: 'New car successfully added',
         showConfirmButton: false,
-        timer: 3500
+        timer: 3500,
       });
 
       this.register.reset();
-    
-    })
+    });
   }
 }

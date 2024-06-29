@@ -19,7 +19,9 @@ export class NavbarComponent implements OnInit{
   userID: string | null = null;
   type: string = "";
 
-  constructor(private router: Router, private localService: LocalService, private cdr: ChangeDetectorRef) { }
+  constructor(private router: Router, private localService: LocalService, private cdr: ChangeDetectorRef) {
+
+   }
   ngOnInit(): void {
     
 
@@ -54,8 +56,8 @@ export class NavbarComponent implements OnInit{
       return false;
     }
   }
-  public isAdmin() {
-    return this.type === 'ADMIN';
-  }
 
+  public isAdmin() {
+    return this.user && this.user.accountType === 'ADMIN';
+  }
 }

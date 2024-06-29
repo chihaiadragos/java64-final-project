@@ -12,7 +12,6 @@ class Reservation {
   public dateFrom: String;
   public dateTo: String;
   public branch: ResBranch | null;
-  // public branchDropOff: Branch | null;
   public amount: number;
 
   constructor();
@@ -24,7 +23,6 @@ class Reservation {
     dateFrom: string,
     dateTo: string,
     branch: ResBranch,
-    // branchDropOff: Branch,
     amount: number
   );
 
@@ -35,7 +33,6 @@ class Reservation {
     dateFrom?: string,
     dateTo?: string,
     branch?: ResBranch,
-    // branchDropOff?: Branch,
     amount?: number
   ) {
     this.id = id ?? 0;
@@ -44,7 +41,6 @@ class Reservation {
     this.dateFrom = dateFrom ?? '';
     this.dateTo = dateTo ?? '';
     this.branch = branch ?? null;
-    // this.branchDropOff = branchDropOff ?? null;
     this.amount = amount ?? 0;
   }
 }

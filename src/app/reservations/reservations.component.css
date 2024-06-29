@@ -16,24 +16,29 @@ button .mat-button {
 .status-pending {
   font-weight: bold;
   color: yellow;
+  background: rgba(13, 14, 13, 0.6)
 }
 
 .status-declined {
   font-weight: bold;
   color: red;
+  background: rgba(13, 14, 13, 0.6)
 }
 
 .status-accepted {
   font-weight: bold;
   color: green;
+  background: rgba(13, 14, 13, 0.6)
 }
 
 .status-completed {
   font-weight: bold;
   color: blue;
+  background: rgba(13, 14, 13, 0.6)
 }
 
 .status-refunded {
   font-weight: bold;
   color: violet;
+  background: rgba(13, 14, 13, 0.6)
 }

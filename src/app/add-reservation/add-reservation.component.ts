@@ -52,7 +52,6 @@ export class AddReservationComponent implements OnInit{
   startString: string = '';
   endString: string = '';
   cars: Car[] = [];
-  defaultImage = "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png";
 
   constructor(private fleetService: FleetService, private localService: LocalService, private formBuilder: FormBuilder) {}
 
@@ -63,10 +62,7 @@ export class AddReservationComponent implements OnInit{
   
     this.fleetService.getAllAvailableCars().subscribe((data) => {
       this.cars = data;
-      this.cars.forEach((element) => {
-        element.imageUrl = this.defaultImage;
-      })
-      console.log(data);
+
     })
 
     this.range.valueChanges.subscribe(value => {
@@ -133,10 +129,7 @@ export class AddReservationComponent implements OnInit{
 
     this.fleetService.availableCarsDuringPeriord(anotherPeriod).subscribe((data) => {
       this.cars = data;
-      this.cars.forEach((element) => {
-        element.imageUrl = this.defaultImage;
-      })
-      console.log(data);
+
     })
   }
 }
