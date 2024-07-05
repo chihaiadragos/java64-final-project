@@ -1,27 +1,36 @@
-# Java64FinalProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+Car Rental Company Frontend Application
+Project Description
+This project is a frontend application developed using Angular for a car rental company. The application provides a seamless and user-friendly interface for both customers and administrators, enabling efficient management of car reservations and user interactions.
 
-## Development server
+User Features:
+Car Reservation:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Users can browse the available fleet of cars and reserve a car for a selected period of time.
+The reservation process is straightforward, allowing users to specify the start and end dates for their rental period.
+Booking History:
 
-## Code scaffolding
+Users can view their booking history, including past and upcoming reservations.
+Detailed information about each reservation, such as car details and rental dates, is available for inspection.
+Refund Request:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Users have the option to request a refund for a reservation directly through the application.
+The refund process is simplified, with users able to track the status of their refund requests.
+User Dashboard:
 
-## Build
+A personalized dashboard provides users with an overview of their account information and activities.
+Users can update their profile information and manage their reservations from the dashboard.
+Admin Features:
+Data Management:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Administrators have full control over the application data, including the ability to create, read, update, and delete records for cars, reservations, and users.
+An intuitive interface ensures that administrators can efficiently manage the database.
+Analytics and Reporting:
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The application provides graphical representations of various data points, allowing administrators to inspect trends and make informed decisions.
+Charts and graphs present insights into reservation patterns, user activities, and fleet utilization.
+Technologies Used:
+Angular: For building a dynamic and responsive user interface.
+Angular Material: To provide a consistent and attractive design with pre-built UI components.
+TypeScript: Ensuring type safety and enhancing code maintainability.
+This project aims to streamline the car rental process for both users and administrators, enhancing the overall efficiency and user experience of the car rental company.
